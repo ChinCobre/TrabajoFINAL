@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import io.github.cdimascio.dotenv.Dotenv;
 
-public class ConexionDB {
+public class ConexionBD {
 	public static void main(String[] args) {
 		Connection conn = null;
 

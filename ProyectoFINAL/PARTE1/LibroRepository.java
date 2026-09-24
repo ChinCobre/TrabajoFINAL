@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class LibroRepository implements GenericDAO<Libro>  {
@@ -35,9 +36,21 @@ public class LibroRepository implements GenericDAO<Libro>  {
 
 	@Override
 	public List<Libro> obtenerTodos() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		  List<Libro> lista = new ArrayList<>();
+	        String sql = "SELECT * FROM plataforma";
+	        try (Connection con = ConexionBD.getConnection();
+	             PreparedStatement ps = con.prepareStatement(sql);
+	             ResultSet rs = ps.executeQuery()) {
+	            while (rs.next()) {
+	                lista.add(mapear(rs));
+	            }
+	        } catch (SQLException e) {
+	            System.out.println("Error obteniendo plataformas: " + e.getMessage());
+	        }
+	        return lista;
+	    }
+	
+	
 
 	private Libro mapear(ResultSet rs) throws SQLException {
 		Libro s = new Libro();
