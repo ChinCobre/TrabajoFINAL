@@ -7,6 +7,7 @@ public class main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		Libro libro = new Libro();
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("Selecciona una operación");

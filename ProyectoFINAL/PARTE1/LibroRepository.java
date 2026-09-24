@@ -50,7 +50,10 @@ public class LibroRepository implements GenericDAO<Libro>  {
 	        return lista;
 	    }
 	
-	
+		private void syso() {
+			// TODO Auto-generated method stub
+
+		}
 
 	private Libro mapear(ResultSet rs) throws SQLException {
 		Libro s = new Libro();
