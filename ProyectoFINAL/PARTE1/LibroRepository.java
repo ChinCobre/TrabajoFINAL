@@ -38,20 +38,10 @@ public class LibroRepository implements GenericDAO<Libro>  {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 
-	private Libro mapear(ResultSet rs) throws SQLException {
-		Libro s = new Libro();
-        s.setId(rs.getInt("id"));
-        s.setTitulo(rs.getString("titulo"));
-        s.setAutor(rs.getString("autor"));
-        s.setPrecio(rs.getDouble("precio"));
-        s.setId(rs.getInt("stock"));
-       
-        return s;
-    }
+	
 }
-
-
 
 
 
