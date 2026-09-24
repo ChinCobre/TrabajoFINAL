@@ -6,8 +6,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/2DAM/Downloads/librerias/dotenv-java-3.2.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/2DAM/Downloads/librerias/mysql-connector-j-26.7.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/2DAM/Documents/libreria/dotenv-java-3.2.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/2DAM/Documents/libreria/mysql-connector-j-26.7.0.jar"/>
 	<classpathentry kind="output" path="bin"/>

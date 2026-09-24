@@ -7,7 +7,7 @@ public class main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Libro libro = new Libro();
+		LibroRepository libro = new LibroRepository();
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("Selecciona una operación");
@@ -27,36 +27,43 @@ public class main {
 		System.out.println(
 				"8. Hacer copia: copia todos los datos del repositorio activo al otro (de archivo a MySQL o viceversa).");
 
-		int eleccion = sc.nextInt();
+		int eleccion ;
+		do {
+			eleccion = Integer.parseInt(sc.nextLine());
 
-		switch (eleccion) {
-		case 1:
-			
-			break;
-		case 2:
+			switch (eleccion) {
+			case 1:
+				System.out.println(libro.obtenerTodos());
+				break;
+			case 2:
+				System.out.println("Dime el titulo del libro");
+				String nombre = sc.nextLine();
+				System.out.println(nombre+" asdasd");
+				break;
+			case 3:
 
-			break;
-		case 3:
+				break;
+			case 4:
 
-			break;
-		case 4:
+				break;
+			case 5:
 
-			break;
-		case 5:
+				break;
+			case 6:
 
-			break;
-		case 6:
+				break;
+			case 7:
 
-			break;
-		case 7:
+				break;
+			case 8:
 
-			break;
-		case 8:
-
-			break;
-		default:
-			break;
-		}
+				break;
+			case 0:
+				System.out.println("Fin de programa");
+			default:
+				break;
+			}
+		} while (eleccion != 0);
 	}
 
 }
