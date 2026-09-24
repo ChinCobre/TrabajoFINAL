@@ -2,12 +2,12 @@ package PARTE1;
 
 public class Libro {
 
-	protected String id;
+	protected int id;
 	protected String titulo;
 	protected String autor;
 	protected Double precio;
 	protected int stock;
-	public Libro(String id, String titulo, String autor, Double precio, int stock) {
+	public Libro(int id, String titulo, String autor, Double precio, int stock) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
@@ -15,10 +15,13 @@ public class Libro {
 		this.precio = precio;
 		this.stock = stock;
 	}
-	public String getId() {
+	public Libro() {
+		super();
+	}
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getTitulo() {
@@ -50,6 +53,7 @@ public class Libro {
 		return "Libro [id=" + id + ", titulo=" + titulo + ", autor=" + autor + ", precio=" + precio + ", stock=" + stock
 				+ "]";
 	}
+	
 	
 	
 }
