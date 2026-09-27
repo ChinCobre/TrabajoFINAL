@@ -68,8 +68,53 @@ public class LibroRepository implements GenericDAO<Libro> {
 			System.out.println("Error buscando libro por título: " + e.getMessage());
 		}
 
+		
 		return null;
 	}
+	public List<Libro> buscarPorAutor(String autor) {
+	    List<Libro> lista = new ArrayList<>();
+	    String sql = "SELECT * FROM libro WHERE autor = ?";
+
+	    try (Connection con = ConexionBD.getConnection(); 
+	         PreparedStatement ps = con.prepareStatement(sql)) {
+
+	        ps.setString(1, autor);
+
+	        try (ResultSet rs = ps.executeQuery()) {
+	            while (rs.next()) {
+	                lista.add(mapear(rs));
+	            }
+	        }
+
+	    } catch (SQLException e) {
+	        System.out.println("Error buscando libros por autor: " + e.getMessage());
+	    }
+
+	    return lista;
+	}
+	public List<Libro> buscarPorRangoDePrecios(double min, double max) {
+	    List<Libro> lista = new ArrayList<>();
+	    String sql = "SELECT * FROM libro WHERE precio BETWEEN ? AND ?";
+
+	    try (Connection con = ConexionBD.getConnection(); 
+	         PreparedStatement ps = con.prepareStatement(sql)) {
+
+	        ps.setDouble(1, min);
+	        ps.setDouble(2, max);
+
+	        try (ResultSet rs = ps.executeQuery()) {
+	            while (rs.next()) {
+	                lista.add(mapear(rs));
+	            }
+	        }
+
+	    } catch (SQLException e) {
+	        System.out.println("Error buscando libros por rango de precios: " + e.getMessage());
+	    }
+
+	    return lista;
+	}
+	
 	
 	
 
