@@ -77,6 +77,7 @@ public class main {
 			    System.out.println("Dime el título del libro que quieres eliminar:");
 			    String tituloABorrar = sc.nextLine();
 			    
+			  
 			    Libro l = libro.buscarPorTitulo(tituloABorrar);
 			    
 			    if (l == null) {
