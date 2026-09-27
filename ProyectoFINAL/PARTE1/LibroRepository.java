@@ -79,7 +79,7 @@ public class LibroRepository implements GenericDAO<Libro> {
 		s.setTitulo(rs.getString("titulo"));
 		s.setAutor(rs.getString("autor"));
 		s.setPrecio(rs.getDouble("precio"));
-		s.setId(rs.getInt("stock"));
+		s.setStock(rs.getInt("stock"));
 
 		return s;
 	}
