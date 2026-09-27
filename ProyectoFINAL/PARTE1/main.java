@@ -80,7 +80,7 @@ public class main {
 				if (origen == 1) {
 					System.out.println(libroSql.buscarPorCantidadMinima(stock));
 				} else {
-					System.out.println(libroArchivo.buscarPorCantidadMinma(stock));
+					System.out.println(libroArchivo.buscarPorCantidadMinima(stock));
 				}
 				break;
 			case 6:
