@@ -56,7 +56,7 @@ public class LibroRepositoryArchivo implements GenericDAO<Libro> {
 			return lista;
 		}
 
-		public List<Libro> buscarPorCantidadMinma(int stock) {
+		public List<Libro> buscarPorCantidadMinima(int stock) {
 			List<Libro> lista = new ArrayList<>();
 			for (Libro l : obtenerTodos()) {
 				if (l.getStock() >= stock) lista.add(l);
