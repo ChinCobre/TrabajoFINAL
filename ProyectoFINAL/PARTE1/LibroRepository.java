@@ -9,7 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LibroRepository implements GenericDAO<Libro> {
-
+	@Override
+	public boolean eliminar(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 
 	@Override
@@ -18,11 +22,7 @@ public class LibroRepository implements GenericDAO<Libro> {
 		return false;
 	}
 
-	@Override
-	public boolean eliminar(int id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 	@Override
 	public Libro obtenerPorId(int id) {
@@ -143,9 +143,6 @@ public class LibroRepository implements GenericDAO<Libro> {
 	    return lista;
 	}
 	/* 6. Insertar nuevo libro: el usuario proporcionará id, título, autor, precio y stock del nuevo libro.
-	• 7. Eliminar libro por título: elimina un libro por su título. Si hay varios con el mismo título, el usuario
-	elige por id.
-	• 8. Hacer copia: copia todos los datos del repositorio activo al otro (de archivo a MySQL o viceversa).
 	*/ 
 	@Override
 	public boolean insertar(Libro obj) {
@@ -171,8 +168,29 @@ public class LibroRepository implements GenericDAO<Libro> {
 	      }
 	        return false;
 	    }
+	/* 7. Eliminar libro por título: elimina un libro por su título. Si hay varios con el mismo título, el usuario
+	elige por id.
+	*/
+	public boolean eliminarPorTitulo(String titulo) {
+	    String sql = "DELETE FROM libro WHERE titulo = ?";
+	    
+	    try (Connection con = ConexionBD.getConnection();
+	         PreparedStatement ps = con.prepareStatement(sql)) {
+	         
+	        ps.setString(1, titulo);
+	        int filasAfectadas = ps.executeUpdate();
+	        return filasAfectadas > 0;
 
+	    } catch (SQLException e) {
+	        System.out.println("Error al eliminar libro: " + e.getMessage());
+	    }
 
+	    return false;
+	}
+	
+
+	
+	
 	private Libro mapear(ResultSet rs) throws SQLException {
 		Libro s = new Libro();
 		s.setId(rs.getInt("id"));
