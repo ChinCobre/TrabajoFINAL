@@ -74,9 +74,23 @@ public class main {
 					System.out.println("No se ha podido añadir");
 				break;
 			case 7:
-				
+			    System.out.println("Dime el título del libro que quieres eliminar:");
+			    String tituloABorrar = sc.nextLine();
 			    
-				break;
+			    Libro l = libro.buscarPorTitulo(tituloABorrar);
+			    
+			    if (l == null) {
+			        System.out.println("No se encontró ningún libro con ese título.");
+			    } else {
+			        
+			        boolean borrado = libro.eliminar(l.getId());
+			        if (borrado) {
+			            System.out.println("Libro eliminado correctamente.");
+			        } else {
+			            System.out.println("Error al eliminar el libro.");
+			        }
+			    }
+			    break;
 			case 8:
 
 				break;
