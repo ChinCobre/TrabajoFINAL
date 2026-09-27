@@ -11,9 +11,21 @@ import java.util.List;
 public class LibroRepository implements GenericDAO<Libro> {
 	@Override
 	public boolean eliminar(int id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+		 String sql = "DELETE FROM libro WHERE id = ?";
+		    
+		    try (Connection con = ConexionBD.getConnection();
+		         PreparedStatement ps = con.prepareStatement(sql)) {
+		         
+		        ps.setInt(1, id);
+		        int filasAfectadas = ps.executeUpdate();
+		        return filasAfectadas > 0;
+
+		    } catch (SQLException e) {
+		        System.out.println("Error al eliminar libro: " + e.getMessage());
+		    }
+
+		    return false;
+		}
 	
 
 	@Override
@@ -121,7 +133,7 @@ public class LibroRepository implements GenericDAO<Libro> {
 	}
 	/* 5. Buscar libros por cantidad mínima en stock: permite buscar libros con stock igual o mayor al
 		especificado.*/ 
-	public List<Libro> buscarPorCantidadMinma(int stock) {
+	public List<Libro> buscarPorCantidadMinima(int stock) {
 	    List<Libro> lista = new ArrayList<>();
 	    String sql = "SELECT * FROM libro WHERE stock>=? ";
 
