@@ -1,3 +1,7 @@
+/**
+ * @author Sergio y Octavian
+ */
+
 package PARTE1;
 
 import java.sql.Connection;
@@ -9,6 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LibroRepository implements GenericDAO<Libro> {
+	/**
+	 * Elimina un libro de la base de datos si el id coincide con un id de la base de datos.
+	 * 
+	 * @param id recibe el id del libro que quiere borrar.
+	 * @return true o false, depende de si pudo o no borrar.
+	 * @throws SQLException si no se puede acceder a la base de datos.
+	 */
 	@Override
 	public boolean eliminar(int id) {
 		 String sql = "DELETE FROM libro WHERE id = ?";
@@ -28,6 +39,13 @@ public class LibroRepository implements GenericDAO<Libro> {
 		}
 	
 
+	/**
+	 * Actualiza los datos de un objeto libro.
+	 * 
+	 * @param Objeto libro.
+	 * @return devuelve true o false si se ha actualizado o no.
+	 * 
+	 */
 	@Override
 	public boolean actualizar(Libro obj) {
 		// TODO Auto-generated method stub
@@ -35,13 +53,25 @@ public class LibroRepository implements GenericDAO<Libro> {
 	}
 
 	
-
+	/**
+	 * Busca un libro segun el id introducido.
+	 * 
+	 * @param id a buscar.
+	 * @return devuelve el libro correspondiente al id introducido.
+	 * 
+	 */
 	@Override
 	public Libro obtenerPorId(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	/*Mostrar todos los libros: mostrará por pantalla todos los libros disponibles en el sistema.*/
+	
+	/**
+	 * Mostrará por pantalla todos los libros disponibles en el sistema.
+	 * 
+	 * @return devuelve la lista de los libros.
+	 * @throws SQLException si no se puede acceder a la base de datos.
+	 */
 	@Override
 	public List<Libro> obtenerTodos() {
 		List<Libro> lista = new ArrayList<>();
@@ -58,8 +88,13 @@ public class LibroRepository implements GenericDAO<Libro> {
 		return lista;
 	}
 	
-	/*2. Buscar libro por título: permite buscar un libro específico por su título.*/
-
+	
+	/**
+	 * Muestra los libros con el mismo
+	 * 
+	 * @param titulo
+	 * @return
+	 */
 	public Libro buscarPorTitulo(String titulo) {
 
 		String sql = "SELECT * FROM libro WHERE titulo = ?";
