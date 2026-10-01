@@ -90,10 +90,11 @@ public class LibroRepository implements GenericDAO<Libro> {
 	
 	
 	/**
-	 * Muestra los libros con el mismo
+	 * Muestra los libros con el mismo titulo.
 	 * 
 	 * @param titulo
-	 * @return
+	 * @return devuelve todos los libros que coincidan con el titulo introducido.
+	 * @throws SQLException si no se puede acceder a la base de datos.
 	 */
 	public Libro buscarPorTitulo(String titulo) {
 
@@ -118,7 +119,14 @@ public class LibroRepository implements GenericDAO<Libro> {
 		return null;
 	}
 	
-	/* 3. Buscar libros por autor: permite buscar libros de un autor específico.*/
+	
+	/**
+	 *  Permite buscar libros de un autor específico
+	 * 
+	 * @param autor
+	 * @return devuelve todos los libros que coincidan con el nombre del autor introducido.
+	 * @throws SQLException si no se puede acceder a la base de datos.
+	 */
 	public List<Libro> buscarPorAutor(String autor) {
 	    List<Libro> lista = new ArrayList<>();
 	    String sql = "SELECT * FROM libro WHERE autor = ?";
