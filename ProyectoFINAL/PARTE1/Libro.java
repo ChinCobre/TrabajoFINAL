@@ -1,15 +1,37 @@
 package PARTE1;
 
 /**
+ * Entidad que representa un libro
+ * Contiene la información básica del producto como ID, título, autor, precio y stock.
  * 
+ * @author Sergio y Octavian
  */
 public class Libro {
 
-	protected int id;
-	protected String titulo;
-	protected String autor;
-	protected Double precio;
-	protected int stock;
+	/** Identificador único del libro en la base de datos o archivo. */
+    protected int id;
+
+    /** Título del libro. */
+    protected String titulo;
+
+    /** Nombre del autor del libro. */
+    protected String autor;
+
+    /** Precio del libro en euros. */
+    protected Double precio;
+
+    /** Cantidad de unidades disponibles en inventario. */
+    protected int stock;
+    
+    /**
+     * Constructor completo para instanciar un libro con todos sus datos.
+     * 
+     * @param id Identificador único del libro.
+     * @param titulo Título de la obra.
+     * @param autor Nombre del autor.
+     * @param precio Precio de venta.
+     * @param stock Cantidad disponible en almacén.
+     */
 	public Libro(int id, String titulo, String autor, Double precio, int stock) {
 		super();
 		this.id = id;

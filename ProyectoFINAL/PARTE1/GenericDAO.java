@@ -1,7 +1,12 @@
 package PARTE1;
 
 import java.util.List;
-
+/**
+ * Interfaz para los metodos insertar actualizar eliminar y obtener por id
+ * 
+ * @param <T> Tipo de objeto que gestionará el repositorio.
+ * @author Sergio y Octavian
+ */
 public interface GenericDAO<T> {
 	/**
      * metodo para insertar nuevo objeto.
