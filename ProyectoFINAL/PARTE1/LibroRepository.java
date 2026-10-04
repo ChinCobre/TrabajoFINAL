@@ -150,8 +150,13 @@ public class LibroRepository implements GenericDAO<Libro> {
 	}
 	
 	
-	/* 4. Buscar libros por rango de precios: permite buscar libros dentro de un rango de precios indicado por
-	el usuario.*/
+	/**
+	 * Busca libros dentro de un rango de precios determinado.
+	 * 
+	 * @param min Precio mínimo.
+	 * @param max Precio máximo.
+	 * @return Lista de libros que se encuentran dentro del rango.
+	 */
 	public List<Libro> buscarPorRangoDePrecios(double min, double max) {
 	    List<Libro> lista = new ArrayList<>();
 	    String sql = "SELECT * FROM libro WHERE precio BETWEEN ? AND ?";
@@ -174,8 +179,12 @@ public class LibroRepository implements GenericDAO<Libro> {
 
 	    return lista;
 	}
-	/* 5. Buscar libros por cantidad mínima en stock: permite buscar libros con stock igual o mayor al
-		especificado.*/ 
+	/**
+     * Busca libros con una cantidad de stock igual o mayor a la indicada.
+     * 
+     * @param stock Cantidad mínima de unidades en stock.
+     * @return Lista de libros que cumplen con la condición de stock mínimo.
+     */ 
 	public List<Libro> buscarPorCantidadMinima(int stock) {
 	    List<Libro> lista = new ArrayList<>();
 	    String sql = "SELECT * FROM libro WHERE stock>=? ";
@@ -197,8 +206,12 @@ public class LibroRepository implements GenericDAO<Libro> {
 
 	    return lista;
 	}
-	/* 6. Insertar nuevo libro: el usuario proporcionará id, título, autor, precio y stock del nuevo libro.
-	*/ 
+	/**
+     * Inserta un nuevo libro en la base de datos y asigna el ID generado.
+     * 
+     * @param obj Objeto Libro con la información a insertar.
+     * @return true si el libro se registró con éxito, false en caso contrario.
+     */
 	@Override
 	public boolean insertar(Libro obj) {
 	
@@ -223,9 +236,12 @@ public class LibroRepository implements GenericDAO<Libro> {
 	      }
 	        return false;
 	    }
-	/* 7. Eliminar libro por título: elimina un libro por su título. Si hay varios con el mismo título, el usuario
-	elige por id.
-	*/
+	/**
+     * Elimina todos los libros que coincidan exactamente con un título dado.
+     * 
+     * @param titulo Título del libro o libros a eliminar.
+     * @return true si se eliminó al menos un registro, false en caso contrario.
+     */
 	public boolean eliminarPorTitulo(String titulo) {
 	    String sql = "DELETE FROM libro WHERE titulo = ?";
 	    
@@ -244,7 +260,13 @@ public class LibroRepository implements GenericDAO<Libro> {
 	}
 	
 
-	
+	/**
+     * Metodo para obtener todos los campos de la tabla libros
+     * 
+     * @param rs ResultSet posicionado en la fila del libro a extraer.
+     * @return Objeto Libro con todos sus datos
+     * @throws SQLException Si ocurre un error al acceder a las columnas del ResultSet.
+     */
 	
 	private Libro mapear(ResultSet rs) throws SQLException {
 		Libro s = new Libro();
