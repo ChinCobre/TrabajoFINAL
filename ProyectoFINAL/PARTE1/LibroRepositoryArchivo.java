@@ -2,12 +2,20 @@ package PARTE1;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Repositorio de Libros que guarda los datos en un archivo de texto.
+ * 
+ * @author Sergio y Octavian
+ */
 public class LibroRepositoryArchivo implements GenericDAO<Libro> {
 
 	
 		private final String ruta = "libros.txt";
-
+		/**
+	     * Obtiene todos los libros del archivo.
+	     * 
+	     * @return Lista con todos los libros.
+	     */
 		@Override
 		public List<Libro> obtenerTodos() {
 			List<Libro> lista = new ArrayList<>();

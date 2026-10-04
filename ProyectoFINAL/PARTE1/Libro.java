@@ -32,6 +32,7 @@ public class Libro {
      * @param precio Precio de venta.
      * @param stock Cantidad disponible en almacén.
      */
+    
 	public Libro(int id, String titulo, String autor, Double precio, int stock) {
 		super();
 		this.id = id;
@@ -73,6 +74,11 @@ public class Libro {
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
+	/**
+     * Devuelve un String con todos los atributos del libro.
+     * 
+     * @return Cadena formateada con la información del objeto.
+     */
 	@Override
 	public String toString() {
 		return "Libro [id=" + id + ", titulo=" + titulo + ", autor=" + autor + ", precio=" + precio + ", stock=" + stock
