@@ -2,7 +2,12 @@ package PARTE1;
 
 import java.util.List;
 import java.util.Scanner;
-
+/**
+ * Clase principal que ejecuta el menú interactivo por consola.
+ * Permite gestionar el catálogo de libros mediante MySQL o un archivo de texto.
+ * 
+ * @author Sergio y Octavian
+ */
 public class main {
 
 	public static void main(String[] args) {
@@ -25,7 +30,13 @@ public class main {
 		} else {
 			libro = libroArchivo;
 		}
-
+		
+		/**
+	     * Punto de entrada principal de la aplicación.
+	     * Muestra las opciones del menú y procesa las peticiones del usuario.
+	     * 
+	     */
+		
 		System.out.println("Selecciona una operación");
 		System.out.println("1. Mostrar todos los libros");
 		System.out.println("2. Buscar libro por título");
