@@ -5,8 +5,19 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import io.github.cdimascio.dotenv.Dotenv;
-
+/**
+ * Clase para conectarse a la base de datos
+ * carga las credenciales desde un archivo env
+ * 
+ * @author Sergio y Octavian
+ */
 public class ConexionBD {
+	/**
+     * Establece y devuelve una nueva conexión con la base de datos.
+     * 
+     * @return Objeto Connection activo para interactuar con la base de datos, 
+     *         o null si ocurre un error durante la conexión.
+     */
     public static Connection getConnection() {
         Connection conn = null;
         try {
