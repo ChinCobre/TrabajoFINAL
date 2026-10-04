@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"PARTE1","l":"ConexionBD"},{"p":"PARTE1","l":"GenericDAO"},{"p":"PARTE1","l":"Libro"},{"p":"PARTE1","l":"LibroRepository"},{"p":"PARTE1","l":"LibroRepositoryArchivo"},{"p":"PARTE1","l":"main"},{"p":"PARTE1","l":"PACONI"}];updateSearchResults();
