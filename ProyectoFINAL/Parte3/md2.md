@@ -5,6 +5,14 @@ Páginas de Villa Serena abrió hace veinte años como una pequeña tienda de ba
 
 ## 2. Análisis del caso
 ### 2.1 Entidades y atributos
+| Entidad |  Atributos encontrados  | Fragmento del texto |
+|:--------|:-----------------------:|--------------------:|
+| Libro      | String                  | 20                  |
+| Autor      | String                  | 20                  |
+| Editorial      | String                  | 20                  |
+
+
+
 ### 2.2 Relaciones
 ### 2.3 Datos descartados
 ## 3. Reglas de negocio
