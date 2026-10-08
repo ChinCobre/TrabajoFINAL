@@ -7,7 +7,7 @@ Páginas de Villa Serena abrió hace veinte años como una pequeña tienda de ba
 ### 2.1 Entidades y atributos
 | Entidad |  Atributos encontrados  | Fragmento del texto |
 |:--------|:-----------------------:|--------------------:|
-| Libro      | isbn, titulo,                   | 20                  |
+| Libro      | isbn, titulo, año_publicación, num_paginas, precio_catalogo                  | 20                  |
 | Autor      | String                  | 20                  |
 | Editorial      | String                  | 20                  |
 
