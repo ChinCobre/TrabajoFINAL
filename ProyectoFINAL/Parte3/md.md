@@ -62,7 +62,6 @@ Tabla: Editorial
 |pais|varchar(100)|Sí|País de origen de la editorial|
 |telefono|varchar(20)|Sí|Telefono de contacto de la editorial|
  
-
 Tabla: Autor
 | Columna | Tipo | Obligatorio | Descripción |
 |---|---|:---:|---|
