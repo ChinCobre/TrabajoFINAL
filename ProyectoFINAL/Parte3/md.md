@@ -111,9 +111,9 @@ Tabla: Cliente
 |id_cliente|int|Sí|Id único para identificar el cliente con sus datos correspondientes|
 |nombre_completo|varchar(200)|Sí|Nombre y apellidos del cliente|
 |email|varchar(150)|Sí|correo electronico para contactar con el cliente|
-|telefono|varchar(20)|Sí|Teléfono del cliente para contactar|
+|telefono|varchar(20)|No|Teléfono del cliente para contactar|
 |es_socio|boolean|Sí|Declara si un cliente es socio o no|
-|fecha_alta|date|Sí|Fecha de alta del cliente si se hace socio|
+|fecha_alta|date|No|Fecha de alta del cliente si se hace socio|
 
 Tabla: Pedido
 | Columna | Tipo | Obligatorio | Descripción |
@@ -134,7 +134,37 @@ Tabla: Detalle_pedido
 |cantidad|int|Sí|Número de libros pedidos|
 |precio_cobrado|decimal(10,2)|Sí|Precio real unitario cobrado por el libro|
 
-## 8. Decisiones de diseñoo
+## 8. Decisiones de diseñoo1.Inventario por sucursal
+	
+ Por qué: Para solucionar el problema de Villa Serena y saber el stock exacto que hay en cada tienda (Centro, Ribera o Universidad).
+	
+ Qué se decidió: Meter una tabla intermedia llamada Inventario entre tiendas y libros.
+
+ Alternativa descartada: Poner un campo de stock directamente en la tabla Libro, pero eso solo sirve para    tener un total global y no te dice en qué tienda física está el libro.
+
+2.Histórico de precios en los pedidos
+
+Por qué: Para que si el día de mañana cambian los precios en el catálogo, los tickets y facturas antiguas sigan mostrando lo que se cobró realmente en su momento.
+
+Qué se decidió: Guardar el campo precio_cobrado en la tabla Detalle_Pedido.
+
+Alternativa descartada: Consultar el precio directamente de la tabla Libro al hacer el ticket, lo cual descartamos porque si suben los precios, te falsearía toda la contabilidad pasada.
+
+3.Gestión de varios autores
+
+Por qué: Para poder meter libros que tienen varios escritores (como las antologías) o gente que hace prólogos.
+
+Qué se decidió: Usar la tabla intermedia Libro_Autor con un campo rol ('principal' o 'colaborador').
+
+Alternativa descartada: Poner el autor como un atributo plano en la tabla Libro, pero con eso solo puedes meter a uno y pierdes toda la gracia de las relaciones.
+
+4.Fechas de alta opcionales para clientes
+
+Por qué: Para que los clientes normales que compran puntualmente sin ser socios puedan registrarse rápido sin inventar datos.
+ 
+Qué se decidió: Dejar que el campo fecha_alta y el campo telefono permita meter valores nulos.
+
+Alternativa descartada: Que tengan que rellenar todos los campos.
 
 ## 9. Datos de prueba
 
