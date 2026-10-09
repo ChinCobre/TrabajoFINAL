@@ -53,6 +53,8 @@ Páginas de Villa Serena abrió hace veinte años como una pequeña tienda de ba
 ## 3. Reglas de negocio
 ## 4. Diagrama entidad-relación
 
+![Diagrama entidad-relación de la librería](doc/imagenes/diagrama_er.png)
+
 
 
 ## 5. Modelo lógico
