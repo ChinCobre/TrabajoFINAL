@@ -45,7 +45,71 @@ Detalle_Pedido (id_pedido [PK/FK], isbn [PK/FK], cantidad, precio_cobrado)
 ## 6. Script SQL (schema.sql)
 
 ## 7. Diccionario de datos
+Tabla: Tienda
+| Columna | Tipo | Obligatorio | Descripción |
+|---|---|:---:|---|
+|id_tienda|int|Sí|Da un tipo int al campo que no se puede repetir para identificarle. Clave primaria|
+|nombre|varchar(100)|Sí|Nombre de la tienda|
+|direccion|varchar(200)|Sí|Dirección física de la tienda|
+|telefono|varchar(20)|Sí|Teléfono de la tienda|
+|ciudad|varchar(100)|Sí|Ciudad donde se encuentra la tienda|
 
+Tabla: Editorial
+| Columna | Tipo | Obligatorio | Descripción |
+|---|---|:---:|---|
+|id_editorial|int|Sí|Campo obligatorio y unico para identificar. Clave primaria|
+|nombre|varchar(150)|Sí|Nombre de la editorial|
+|pais|varchar(100)|Sí|País de origen de la editorial|
+|telefono|varchar(20)|Sí|Telefono de contacto de la editorial|
+ 
+Tabla: Autor
+| Columna | Tipo | Obligatorio | Descripción |
+|---|---|:---:|---|
+|id_autor|int|Sí|Id para identificar el autor concreto. Clave primaria|
+|nombre|varchar(200)|Sí|Nombre del autor|
+|nacionalidad|varchar(100)|Sí|Nacionalidad del autor|
+|año_nacimiento|year|Sí|Año de nacimiento del autor| 
+
+Tabla: Libro
+| Columna | Tipo | Obligatorio | Descripción |
+|---|---|:---:|---|
+|isbn|char(13)|Sí|Código ISBN de 13 dígitos que identifica el libro de forma única.|
+|titulo|varchar(250)|Sí|Nombre,titulo del libro|
+|año_publicacion|year|Sí|Año en la que el libro se publico|
+|num_paginas|int|Sí|Número de páginas totales del libro|
+|precio_catalogo|decimal(10,2)|Sí|Precio que tiene el libro|
+
+Tabla: Libro_Autor
+| Columna | Tipo | Obligatorio | Descripción |
+|---|---|:---:|---|
+|isbn|char(13)|Sí|Código ISBN de 13 dígitos que identifica el libro de forma única.|
+|id_autor|int|Sí|Id para identificar el autor concreto. Clave primaria|
+|rol|ENUM('principal', 'colaborador')|Sí|Define el rol del autor si ha sido el principal o si ha sido un colaborador|
+
+Tabla: Inventario
+| Columna | Tipo | Obligatorio | Descripción |
+|---|---|:---:|---|
+|id_tienda|int|Sí|Da un tipo int al campo que no se puede repetir para identificarle|
+|isbn|char(13)|Sí|Código ISBN de 13 dígitos que identifica el libro de forma única.|
+|stock|int|Sí|Cantidad de libros que quedan en el inventario|
+|fecha_conteo|date|Sí|Fecha en la que se hizo el recuento del inventario|
+
+Tabla: Empleado
+| Columna | Tipo | Obligatorio | Descripción |
+|---|---|:---:|---|
+|dni|varchar(9)|Sí|Documento personal y único para identificar a una persona|
+|nombre|varchar(100)|Sí|Nombre de la persona contratada|
+|apellidos|varchar(150)|Sí|Apellidos de la persona contratada|
+|cargo|ENUM('librero', 'cajero', 'encargado')|Sí|Declara el puesto del empleado|
+|fecha_contratacion|date|Sí|Fecha de inscripcion del empleado|
+|correo|varchar(150)|Sí|Correo electronico del empleado|
+|id_tienda|int|Sí|Da un tipo int al campo que no se puede repetir para identificarle|
+
+Tabla: Cliente
+| Columna | Tipo | Obligatorio | Descripción |
+|---|---|:---:|---|
+|id_cliente|int|Sí|Id único para identificar el cliente con sus datos correspondientes|
+|nombre_completo|varchar(200)|Sí|
 ## 8. Decisiones de diseño
 
 ## 9. Datos de prueba
