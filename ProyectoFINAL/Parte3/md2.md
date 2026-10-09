@@ -21,7 +21,6 @@ Páginas de Villa Serena abrió hace veinte años como una pequeña tienda de ba
 | Detalle_Pedido | __id_pedido FK__, __isbn FK__, cantidad, precio_cobrado | Los pedidos pueden contener varios libros y se registra la cantidad de cada uno y el precio realmente cobrado. |
 
 
-### 2.2 Relaciones
 
 ### 2.2 Relaciones y cardinalidades
 
@@ -39,6 +38,18 @@ Páginas de Villa Serena abrió hace veinte años como una pequeña tienda de ba
 
 
 ### 2.3 Datos descartados
+
+| Dato | Decisión | Motivo |
+|:---|:---|:---|
+| Total del pedido | No se almacena. | Se calcula sumando __cantidad * precio_cobrado__. |
+| Precio pagado en ventas anteriores | Se guarda en __Detalle_Pedido__ | El precio de catálogo puede cambiar; así se conserva el precio realmente cobrado en cada venta. |
+| Lista de autores en un único campo | No se almacena en __Libro__. | Se utiliza __Libro_Autor__ para representar la relación entre libros y autores. |
+| Datos de la editorial repetidos en cada libro | Se almacenan en __Editorial__. | Se evita duplicar el nombre, país y teléfono de una misma editorial. |
+| Stock de cada libro por tienda | Se almacena en __Inventario__. | La cantidad disponible depende de la combinación de libro y tienda. |
+| Historial de traslados de empleados | No se almacena. | El caso indica que no es necesario registrar los cambios de tienda de los empleados. |
+| Total de ventas por tienda | No se almacena. | Se calcula a partir de los pedidos y sus detalles para el periodo solicitado. |
+| Tabla independiente para socios | No se crea. | Se utiliza __Cliente__ con el atributo __es_socio__ para distinguir a los socios de los no socios. |
+
 ## 3. Reglas de negocio
 ## 4. Diagrama entidad-relación
 ## 5. Modelo lógico
