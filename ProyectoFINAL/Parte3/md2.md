@@ -70,6 +70,7 @@ Páginas de Villa Serena abrió hace veinte años como una pequeña tienda de ba
 
 ## 5. Modelo lógico
 ## 6. Script SQL (schema.sql)
+**Tabla 1**
 
 ```sql
 CREATE TABLE tienda (
@@ -81,6 +82,8 @@ CREATE TABLE tienda (
     PRIMARY KEY (id_tienda)
 );
 ```
+
+**Tabla 2**
 
 ```sql
 CREATE TABLE empleado (
@@ -100,6 +103,8 @@ CREATE TABLE empleado (
 );
 ```
 
+**Tabla 3**
+
 ```sql
 CREATE TABLE cliente (
     id_cliente INT AUTO_INCREMENT,
@@ -113,6 +118,8 @@ CREATE TABLE cliente (
 );
 ```
 
+**Tabla 4**
+
 ```sql
 CREATE TABLE editorial (
     id_editorial INT AUTO_INCREMENT,
@@ -122,6 +129,8 @@ CREATE TABLE editorial (
     PRIMARY KEY (id_editorial)
 );
 ```
+
+**Tabla 5**
 
 ```sql
 CREATE TABLE libro (
@@ -141,6 +150,8 @@ CREATE TABLE libro (
 );
 ```
 
+**Tabla 6**
+
 ```sql
 CREATE TABLE autor (
     id_autor INT AUTO_INCREMENT,
@@ -150,6 +161,8 @@ CREATE TABLE autor (
     PRIMARY KEY (id_autor)
 );
 ```
+
+**Tabla 7**
 
 ```sql
 CREATE TABLE libro_autor (
@@ -167,6 +180,8 @@ CREATE TABLE libro_autor (
         ON DELETE CASCADE
 );
 ```
+
+**Tabla 8**
 
 ```sql
 
@@ -188,6 +203,8 @@ CREATE TABLE inventario (
     CHECK (stock >= 0)
 );
 ```
+
+**Tabla 9**
 
 ```sql
 CREATE TABLE pedido (
@@ -213,6 +230,8 @@ CREATE TABLE pedido (
         ON DELETE RESTRICT
 );
 ```
+
+**Tabla 10**
 
 ```sql
 CREATE TABLE detalle_pedido (
