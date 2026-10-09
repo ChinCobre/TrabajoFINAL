@@ -23,7 +23,25 @@ La librería Páginas de Villa Serena opera a través de tres tiendas físicas (
 ## 4. Diagrama entidad-relación
 
 ## 5. Modelo lógico
+tienda (id_tienda [PK], nombre, direccion, telefono, ciudad)
 
+editorial (id_editorial [PK], nombre, pais, telefono)
+
+autor (id_autor [PK], nombre, nacionalidad, año_nacimiento)
+
+libro (isbn [PK], titulo, año_publicacion, num_paginas, precio_catalogo, id_editorial [FK])
+
+Libro_Autor (isbn [PK/FK], id_autor [PK/FK], rol)
+
+Inventario (id_tienda [PK/FK], isbn [PK/FK], stock, fecha_conteo)
+
+empleado (dni [PK], nombre, apellidos, cargo, fecha_contratacion, correo, id_tienda [FK])
+
+cliente (id_cliente [PK], nombre_completo, email [UNIQUE], telefono, es_socio, fecha_alta)
+
+pedido (id_pedido [PK], fecha, forma_pago, estado, id_tienda [FK], dni_empleado [FK], id_cliente [FK])
+
+Detalle_Pedido (id_pedido [PK/FK], isbn [PK/FK], cantidad, precio_cobrado)
 ## 6. Script SQL (schema.sql)
 
 ## 7. Diccionario de datos
