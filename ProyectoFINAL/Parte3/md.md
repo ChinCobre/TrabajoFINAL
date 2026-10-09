@@ -115,10 +115,6 @@ Tabla: Cliente
 |es_socio|boolean|Sí|Declara si un cliente es socio o no|
 |fecha_alta|date|Sí|Fecha de alta del cliente si se hace socio|
 
-
-
-Detalle_Pedido (id_pedido [PK/FK], isbn [PK/FK], cantidad, precio_cobrado)
-
 Tabla: Pedido
 | Columna | Tipo | Obligatorio | Descripción |
 |---|---|:---:|---|
