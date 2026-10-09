@@ -59,14 +59,14 @@ Páginas de Villa Serena abrió hace veinte años como una pequeña tienda de ba
 
 | Relación | Tipo | Cómo se resuelve |
 |:---|:---:|:---|
-| Tienda – Empleado | 1:N | empleado.id_tienda (FK) |
-| Editorial – Libro | 1:N | libro.id_editorial (FK) |
-| Libro – Autor | N:M | Tabla intermedia libro_autor, con isbn (FK), id_autor (FK) y rol |
-| Tienda – Libro | N:M | Tabla intermedia inventario, con id_tienda (FK), isbn (FK), stock y fecha_conteo |
-| Tienda – Pedido | 1:N | pedido.id_tienda (FK) |
-| Empleado – Pedido | 1:N | pedido.dni_empleado (FK) |
-| Cliente – Pedido | 1:N | pedido.id_cliente (FK) |
-| Pedido – Libro | N:M | Tabla intermedia detalle_pedido, con id_pedido (FK), isbn (FK), cantidad y precio_cobrado |
+| Tienda – Empleado | 1:N | 'empleado.id_tienda FK' |
+| Editorial – Libro | 1:N | libro.id_editorial FK |
+| Libro – Autor | N:M | Tabla intermedia libro_autor, con isbn FK, id_autor FK y rol |
+| Tienda – Libro | N:M | Tabla intermedia inventario, con id_tienda FK, isbn FK, stock y fecha_conteo |
+| Tienda – Pedido | 1:N | pedido.id_tienda FK |
+| Empleado – Pedido | 1:N | pedido.dni_empleado FK |
+| Cliente – Pedido | 1:N | pedido.id_cliente FK |
+| Pedido – Libro | N:M | Tabla intermedia detalle_pedido, con id_pedido FK, isbn FK, cantidad y precio_cobrado |
 
 
 ## 5. Modelo lógico
