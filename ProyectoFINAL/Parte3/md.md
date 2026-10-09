@@ -109,8 +109,36 @@ Tabla: Cliente
 | Columna | Tipo | Obligatorio | Descripción |
 |---|---|:---:|---|
 |id_cliente|int|Sí|Id único para identificar el cliente con sus datos correspondientes|
-|nombre_completo|varchar(200)|Sí|
-## 8. Decisiones de diseño
+|nombre_completo|varchar(200)|Sí|Nombre y apellidos del cliente|
+|email|varchar(150)|Sí|correo electronico para contactar con el cliente|
+|telefono|varchar(20)|Sí|Teléfono del cliente para contactar|
+|es_socio|boolean|Sí|Declara si un cliente es socio o no|
+|fecha_alta|date|Sí|Fecha de alta del cliente si se hace socio|
+
+
+
+Detalle_Pedido (id_pedido [PK/FK], isbn [PK/FK], cantidad, precio_cobrado)
+
+Tabla: Pedido
+| Columna | Tipo | Obligatorio | Descripción |
+|---|---|:---:|---|
+|id_pedido|int|Sí|Manera de identificar un pedido en concreto|
+|fecha|date|Sí|Fecha del pedido|
+|forma_pago|ENUM('efectivo', 'tarjeta', 'bizum')|Sí|Para determinar la forma del pago del pedido|
+|estado|ENUM('preparado', 'entregado', 'cancelado')|Sí|Determinado el estado del pedido|
+|id_tienda|int|Sí|Da un tipo int al campo que no se puede repetir para identificarle|
+|dni_empleado|varchar(9)|Sí|Documento personal y único para identificar a una persona|
+|id_cliente|int|Sí|Id único para identificar el cliente con sus datos correspondientes|
+
+Tabla: Detalle_pedido
+| Columna | Tipo | Obligatorio | Descripción |
+|---|---|:---:|---|
+|id_pedido|int|Sí|Manera de identificar un pedido en concreto|
+|isbn|char(13)|Sí|Código ISBN de 13 dígitos que identifica el libro de forma única.|
+|cantidad|int|Sí|Número de libros pedidos|
+|precio_cobrado|decimal(10,2)|Sí|Precio real unitario cobrado por el libro|
+
+## 8. Decisiones de diseñoo
 
 ## 9. Datos de prueba
 
