@@ -400,7 +400,7 @@ Qué se decidió: Dejar que el campo fecha_alta y el campo telefono permita mete
 
 Alternativa descartada: Que tengan que rellenar todos los campos.
 
-## 9. Datos de prueb
+## 9. Datos de prueba
 INSERT INTO tienda (id_tienda, nombre, direccion, telefono, ciudad) VALUES 
 (1, 'Caserio Colesterol', 'Temporada1', '976000111', 'Al lado de mi casa'),
 (2, 'La classe', 'Calle  Calle Gomera, 15, 29640 Fuengirola, Málaga, España ', '676 767 676', 'Malaga'),
@@ -458,24 +458,22 @@ INSERT INTO cliente (id_cliente, nombre_completo, email, telefono, es_socio, fec
 
 
 INSERT INTO pedido (id_pedido, fecha, forma_pago, estado, id_tienda, dni_empleado, id_cliente) VALUES 
-(10482, '2026-03-12', 'tarjeta', 'entregado', 1, '12345678A', 1),
-(10483, '2026-03-12', 'efectivo', 'preparado', 2, '87654321B', 2),
-(10484, '2026-03-13', 'bizum', 'entregado', 3, '11223344C', 3),
-(10485, '2026-03-13', 'tarjeta', 'cancelado', 1, '12345678A', 2),
-(10486, '2026-03-14', 'efectivo', 'entregado', 2, '87654321B', 1);
-
+(1, '2026-03-12', 'tarjeta', 'entregado', 1, '12345678A', 1),
+(2, '2026-03-12', 'efectivo', 'preparado', 2, '87654321B', 2),
+(3, '2026-03-13', 'bizum', 'entregado', 3, '11223344C', 3),
+(4, '2026-03-13', 'tarjeta', 'cancelado', 1, '12345678A', 2),
+(5, '2026-03-14', 'efectivo', 'entregado', 2, '87654321B', 1);
 
 INSERT INTO Detalle_Pedido (id_pedido, isbn, cantidad, precio_cobrado) VALUES 
-(10482, '9788420471839', 1, 16.50),
-(10482, '9788420633145', 2, 12.00),
-(10483, '9788408035698', 1, 14.50),
-(10484, '9788401352836', 1, 18.00),
-(10484, '9788420651101', 2, 11.50),
-(10485, '9788420471839', 1, 16.50),
-(10486, '9788408035698', 2, 14.50),
-(10486, '9788401352836', 1, 18.00);
-
-## 10. Consultas de pruebaa
+(1, '9788420471839', 1, 16.50),
+(1, '9788420633145', 2, 12.00),
+(2, '9788408035698', 1, 14.50),
+(3, '9788401352836', 1, 18.00),
+(3, '9788420651101', 2, 11.50),
+(4, '9788420471839', 1, 16.50),
+(5, '9788408035698', 2, 14.50),
+(5, '9788401352836', 1, 18.00);
+## 10. Consultas de prueba
 1- ¿Qué libros hay disponibles en el inventario de la tienda "Caserio Colesterol" y cuántas unidades quedan?
     
   Consulta:
@@ -537,7 +535,8 @@ JOIN Detalle_Pedido dp ON dp.id_pedido = p.id_pedido
 WHERE e.nombre = 'Kentaro';
 
    Resultado esperado:
-    | id_pedido | fecha | isbn | cantidad | precio_cobrado |
+   
+  	| id_pedido | fecha | isbn | cantidad | precio_cobrado |
     |---|---|---|---|---|
     | 1 | 2026-03-12 | 9788420471839 | 1 | 16.50 |
     | 1 | 2026-03-12 | 9788420633145 | 2 | 12.00 |
