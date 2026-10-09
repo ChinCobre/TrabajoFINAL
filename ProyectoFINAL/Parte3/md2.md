@@ -23,6 +23,19 @@ Páginas de Villa Serena abrió hace veinte años como una pequeña tienda de ba
 
 ### 2.2 Relaciones
 
+### 2.2 Relaciones y cardinalidades
+
+| Relación | Cardinalidad | Justificación |
+|:---|:---:|:---|
+| Tienda – Empleado | 1:N | Una tienda puede tener varios empleados y cada empleado trabaja en una sola tienda. |
+| Editorial – Libro | 1:N | Una editorial puede publicar muchos libros, pero cada libro pertenece a una única editorial. |
+| Libro – Autor | N:M | Un libro puede tener varios autores y un autor puede escribir varios libros. Se resuelve con la tabla Libro_Autor. |
+| Tienda – Libro | N:M | Una tienda puede tener muchos libros y un libro puede estar disponible en varias tiendas. Se resuelve con la tabla Inventario. |
+| Tienda – Pedido | 1:N | Una tienda puede registrar muchos pedidos, pero cada pedido se realiza en una sola tienda. |
+| Empleado – Pedido | 1:N | Un empleado puede gestionar muchos pedidos, pero cada pedido lo gestiona un único empleado. |
+| Cliente – Pedido | 1:N | Un cliente puede realizar muchos pedidos, pero cada pedido corresponde a un único cliente. |
+| Pedido – Libro | N:M | Un pedido puede incluir varios libros y un libro puede aparecer en muchos pedidos. Se resuelve con la tabla Detalle_Pedido. |
+
 
 
 ### 2.3 Datos descartados
