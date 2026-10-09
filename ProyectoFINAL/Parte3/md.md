@@ -166,8 +166,80 @@ Qué se decidió: Dejar que el campo fecha_alta y el campo telefono permita mete
 
 Alternativa descartada: Que tengan que rellenar todos los campos.
 
-## 9. Datos de prueba
+## 9. Datos de prueb
+INSERT INTO tienda (id_tienda, nombre, direccion, telefono, ciudad) VALUES 
+(1, 'Caserio Colesterol', 'Temporada1', '976000111', 'Al lado de mi casa'),
+(2, 'La classe', 'Calle  Calle Gomera, 15, 29640 Fuengirola, Málaga, España ', '676 767 676', 'Malaga'),
+(3, 'Paconis', 'Debajo de mi casa por ahi', '976 541 123', 'Zaragoza');
 
-## 10. Consultas de prueba
+
+INSERT INTO editorial (id_editorial, nombre, pais, telefono) VALUES 
+(1, 'Anaya', 'España', '976 812 111'),
+(2, 'Ibrea', 'Marruecos', '976 123 534'),
+(3, 'Quevedos', 'Rumania', '976 431 852');
+
+
+INSERT INTO autor (id_autor, nombre, nacionalidad, anio_nacimiento) VALUES 
+(1, 'Jordi Wild', 'Catalana', NULL),
+(2, 'Dalas Review', 'Andorrano', NULL),
+(3, 'Dross', 'Venezuela', NULL);
+
+
+INSERT INTO libro (isbn, titulo, anio_publicacion, num_paginas, precio_catalogo, id_editorial) VALUES 
+('9788420471839', 'Asi es la puta vida', 2067, 600, 16.50, 1),
+('9788420633145', 'Capitan Calzoncillos', 1999, 220, 12.00, 2),
+('9788408035698', 'Sueños de acero y neon', 1963, 450, 14.50, 3),
+('9788401352836', 'El libro troll', 2002, 480, 18.00, 1),
+('9788420651101', 'Yo soy el Berserk', 1996, 180, 11.50, 2);
+
+
+INSERT INTO Libro_Autor (isbn, id_autor, rol) VALUES 
+('9788420471839', 1, 'principal'),
+('9788420633145', 2, 'principal'),
+('9788408035698', 3, 'principal'),
+('9788401352836', 3, 'principal'),
+('9788420651101', 2, 'principal'), 
+('9788420633145', 1, 'colaborador');
+
+
+INSERT INTO Inventario (id_tienda, isbn, stock, fecha_conteo) VALUES 
+(1, '9788420471839', 4, '2026-03-02'),
+(1, '9788420633145', 2, '2026-03-02'),
+(2, '9788420471839', 0, '2026-03-01'),
+(2, '9788408035698', 5, '2026-03-02'),
+(3, '9788401352836', 3, '2026-03-02'),
+(3, '9788420651101', 6, '2026-03-02');
+
+INSERT INTO empleado (dni, nombre, apellidos, cargo, fecha_contratacion, correo, id_tienda) VALUES 
+('12345678A', 'Kentaro', 'Miura', 'cajero', '2024-01-15', 'Thegoat@gmail.com', 1),
+('87654321B', 'Pedro', 'Sanche', 'librero', '2023-05-10', 'perrosanxe@gmail.com', 2),
+('11223344C', 'Octavian', 'Catalin', 'encargado', '2022-11-20', 'rumano@gmail.com', 3);
+
+
+INSERT INTO cliente (id_cliente, nombre_completo, email, telefono, es_socio, fecha_alta) VALUES 
+(1, 'Sergio Adell', 'yo@gmail.com', '600123456', 1, '2025-10-10'),
+(2, 'Rayo Mcqueen', 'Elmasrapido@gmail.com', NULL, 0, NULL),
+(3, 'Cristiano Ronaldo', 'serre7@gmail.com', '677987654', 1, '2026-01-05');
+
+
+INSERT INTO pedido (id_pedido, fecha, forma_pago, estado, id_tienda, dni_empleado, id_cliente) VALUES 
+(10482, '2026-03-12', 'tarjeta', 'entregado', 1, '12345678A', 1),
+(10483, '2026-03-12', 'efectivo', 'preparado', 2, '87654321B', 2),
+(10484, '2026-03-13', 'bizum', 'entregado', 3, '11223344C', 3),
+(10485, '2026-03-13', 'tarjeta', 'cancelado', 1, '12345678A', 2),
+(10486, '2026-03-14', 'efectivo', 'entregado', 2, '87654321B', 1);
+
+
+INSERT INTO Detalle_Pedido (id_pedido, isbn, cantidad, precio_cobrado) VALUES 
+(10482, '9788420471839', 1, 16.50),
+(10482, '9788420633145', 2, 12.00),
+(10483, '9788408035698', 1, 14.50),
+(10484, '9788401352836', 1, 18.00),
+(10484, '9788420651101', 2, 11.50),
+(10485, '9788420471839', 1, 16.50),
+(10486, '9788408035698', 2, 14.50),
+(10486, '9788401352836', 1, 18.00);
+
+## 10. Consultas de pruebaa
 
 ## 11. Limitaciones y mejoras futuras
