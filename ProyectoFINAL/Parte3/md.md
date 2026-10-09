@@ -179,13 +179,14 @@ INSERT INTO editorial (id_editorial, nombre, pais, telefono) VALUES
 (3, 'Quevedos', 'Rumania', '976 431 852');
 
 
-INSERT INTO autor (id_autor, nombre, nacionalidad, anio_nacimiento) VALUES 
-(1, 'Jordi Wild', 'Catalana', NULL),
-(2, 'Dalas Review', 'Andorrano', NULL),
-(3, 'Dross', 'Venezuela', NULL);
+
+INSERT INTO autor (nombre, nacionalidad, año_nacimiento) VALUES 
+('Jordi Wild', 'Catalana', 1984),
+('Dalas Review', 'Andorrano', 1993),
+('Dross', 'Venezuela', 1982);
 
 
-INSERT INTO libro (isbn, titulo, anio_publicacion, num_paginas, precio_catalogo, id_editorial) VALUES 
+INSERT INTO libro (isbn, titulo, año_publicacion, num_paginas, precio_catalogo, id_editorial) VALUES 
 ('9788420471839', 'Asi es la puta vida', 2067, 600, 16.50, 1),
 ('9788420633145', 'Capitan Calzoncillos', 1999, 220, 12.00, 2),
 ('9788408035698', 'Sueños de acero y neon', 1963, 450, 14.50, 3),
@@ -240,6 +241,86 @@ INSERT INTO Detalle_Pedido (id_pedido, isbn, cantidad, precio_cobrado) VALUES
 (10486, '9788408035698', 2, 14.50),
 (10486, '9788401352836', 1, 18.00);
 
-## 10. Consultas de pruebaa
+## 10. Consultas de pruebaa1- ¿Qué libros hay disponibles en el inventario de la tienda "Caserio Colesterol" y cuántas unidades quedan?
+    
+  Consulta:
 
+SELECT 
+    l.titulo, i.stock, i.fecha_conteo
+FROM Inventario i
+JOIN libro l ON l.isbn = i.isbn
+JOIN tienda t ON t.id_tienda = i.id_tienda
+WHERE t.nombre = 'Caserio Colesterol';
+
+| titulo | stock | fecha_conteo |
+|---|---|---|
+| Asi es la puta vida | 4 | 2026-03-02 |
+| Capitan Calzoncillos | 2 | 2026-03-02 |
+
+2- ¿Qué libros ha escrito el autor Dross y con qué rol participan?
+
+   Consulta:
+
+SELECT 
+   l.titulo, la.rol
+FROM Libro_Autor la
+JOIN libro l ON l.isbn = la.isbn
+WHERE la.id_autor = 3;
+
+| titulo | rol |
+|---|---|
+| Sueños de acero y neon | principal |
+| El libro troll | principal |
+
+3- ¿Qué libros del catálogo pertenecen a la editorial "Anaya"?
+
+   Consulta:
+   
+SELECT 
+    l.titulo, l.precio_catalogo
+FROM libro l
+JOIN editorial e ON e.id_editorial = l.id_editorial
+WHERE e.nombre = 'Anaya';
+
+Resultado esperado:
+
+| titulo | precio_catalogo |
+|---|---|
+| Asi es la puta vida | 16.50 |
+| El libro troll | 18.00 |
+
+4-¿Qué detalles de compra contienen los pedidos atendidos por el empleado "Kentaro Miura"?
+
+   Consulta:
+   
+SELECT 
+    p.id_pedido, p.fecha, dp.isbn, dp.cantidad, dp.precio_cobrado
+FROM pedido p
+JOIN empleado e ON e.dni = p.dni_empleado
+JOIN Detalle_Pedido dp ON dp.id_pedido = p.id_pedido
+WHERE e.nombre = 'Kentaro';
+
+   Resultado esperado:
+    | id_pedido | fecha | isbn | cantidad | precio_cobrado |
+    |---|---|---|---|---|
+    | 1 | 2026-03-12 | 9788420471839 | 1 | 16.50 |
+    | 1 | 2026-03-12 | 9788420633145 | 2 | 12.00 |
+    | 4 | 2026-03-13 | 9788420471839 | 1 | 16.50 |
+    
+   5-¿Qué clientes de la base de datos son socios y cuál es su fecha de alta?
+
+   Consulta:
+    
+SELECT 
+    nombre_completo, 
+    email, 
+    fecha_alta
+FROM cliente
+WHERE es_socio = 1;
+
+   Resultado esperado:
+    | nombre_completo | email | fecha_alta |
+    |---|---|---|
+    | Sergio Adell | yo@gmail.com | 2025-10-10 |
+    | Cristiano Ronaldo | serre7@gmail.com | 2026-01-05 |
 ## 11. Limitaciones y mejoras futuras
