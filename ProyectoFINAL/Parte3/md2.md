@@ -52,6 +52,9 @@ Páginas de Villa Serena abrió hace veinte años como una pequeña tienda de ba
 
 ## 3. Reglas de negocio
 ## 4. Diagrama entidad-relación
+
+
+
 ## 5. Modelo lógico
 ## 6. Script SQL (schema.sql)
 ## 7. Diccionario de datos
