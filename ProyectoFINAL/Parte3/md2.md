@@ -257,4 +257,23 @@ CREATE TABLE detalle_pedido (
 ## 8. Decisiones de diseño
 ## 9. Datos de prueba
 ## 10. Consultas de prueba
+
+
+
+
+
 ## 11. Limitaciones y mejoras futuras
+
+
+La base de datos permite gestionar las principales tareas de la librería, pero hay algunas cosas que no incluye y que se podrían añadir en el futuro si el negocio creciera.
+
+| Limitación | Posible mejora |
+|:---:|:---:|
+| No se guardan los precios antiguos de los libros. | Añadir una tabla para guardar los precios anteriores y las fechas en las que estuvieron vigentes. |
+| No se registran las devoluciones de libros. |	Crear una tabla para guardar los libros devueltos, la cantidad y el motivo de la devolución. |
+| No se guardan los cambios de tienda de los empleados. | Guardar un historial para saber en qué tienda ha trabajado cada empleado y durante cuánto tiempo. |
+| No se registran todos los movimientos del inventario. | Añadir una tabla para controlar las entradas, salidas y traslados de libros entre tiendas. |
+| No se gestionan los envíos de pedidos a domicilio. | Añadir información sobre la dirección de entrega, la fecha de envío y el estado del pedido. |
+| No se pueden reservar libros. | Crear una tabla para registrar las reservas de los clientes y saber si siguen pendientes o ya se han completado. |
+
+
