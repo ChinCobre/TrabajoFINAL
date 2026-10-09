@@ -536,12 +536,12 @@ WHERE e.nombre = 'Kentaro';
 
    Resultado esperado:
    
-  	| id_pedido | fecha | isbn | cantidad | precio_cobrado |
-    |---|---|---|---|---|
-    | 1 | 2026-03-12 | 9788420471839 | 1 | 16.50 |
-    | 1 | 2026-03-12 | 9788420633145 | 2 | 12.00 |
-    | 4 | 2026-03-13 | 9788420471839 | 1 | 16.50 |
-    
+| id_pedido | fecha | isbn | cantidad | precio_cobrado |
+|:---|:---|:---|:---|:---|
+| 1 | 2026-03-12 | 9788420471839 | 1 | 16.50 |
+| 1 | 2026-03-12 | 9788420633145 | 2 | 12.00 |
+| 4 | 2026-03-13 | 9788420471839 | 1 | 16.50 |
+
    5-¿Qué clientes de la base de datos son socios y cuál es su fecha de alta?
 
    Consulta:
@@ -554,10 +554,12 @@ FROM cliente
 WHERE es_socio = 1;
 
    Resultado esperado:
-    | nombre_completo | email | fecha_alta |
-    |---|---|---|
-    | Sergio Adell | yo@gmail.com | 2025-10-10 |
-    | Cristiano Ronaldo | serre7@gmail.com | 2026-01-05 |
+   
+| nombre_completo | email | fecha_alta |
+|---|---|---|
+| Sergio Adell | yo@gmail.com | 2025-10-10 |
+| Cristiano Ronaldo | serre7@gmail.com | 2026-01-05 |
+
 ## 11. Limitaciones y mejoras futuras
 
 La base de datos permite gestionar las principales tareas de la librería, pero hay algunas cosas que no incluye y que se podrían añadir en el futuro si el negocio creciera.
