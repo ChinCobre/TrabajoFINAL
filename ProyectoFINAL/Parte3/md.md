@@ -323,4 +323,5 @@ WHERE es_socio = 1;
     |---|---|---|
     | Sergio Adell | yo@gmail.com | 2025-10-10 |
     | Cristiano Ronaldo | serre7@gmail.com | 2026-01-05 |
-## 11. Limitaciones y mejoras futuras
+## 11. Limitaciones y mejoras futuras
+
