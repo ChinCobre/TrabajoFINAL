@@ -56,21 +56,184 @@ Páginas de Villa Serena abrió hace veinte años como una pequeña tienda de ba
 ![Diagrama entidad-relación de la librería](../doc/imagenes/diagrama_er.png)
 
 
-
 | Relación | Tipo | Cómo se resuelve |
 |:---|:---:|:---|
-| Tienda – Empleado | 1:N | 'empleado.id_tienda FK' |
-| Editorial – Libro | 1:N | libro.id_editorial FK |
-| Libro – Autor | N:M | Tabla intermedia libro_autor, con isbn FK, id_autor FK y rol |
-| Tienda – Libro | N:M | Tabla intermedia inventario, con id_tienda FK, isbn FK, stock y fecha_conteo |
-| Tienda – Pedido | 1:N | pedido.id_tienda FK |
-| Empleado – Pedido | 1:N | pedido.dni_empleado FK |
-| Cliente – Pedido | 1:N | pedido.id_cliente FK |
-| Pedido – Libro | N:M | Tabla intermedia detalle_pedido, con id_pedido FK, isbn FK, cantidad y precio_cobrado |
+| Tienda – Empleado | 1:N |`empleado.id_tienda FK` |
+| Editorial – Libro | 1:N | `libro.id_editorial FK` |
+| Libro – Autor | N:M | `Tabla intermedia libro_autor, con isbn FK, id_autor FK y rol` |
+| Tienda – Libro | N:M | `Tabla intermedia inventario, con id_tienda FK, isbn FK, stock y fecha_conteo` |
+| Tienda – Pedido | 1:N | `pedido.id_tienda FK` |
+| Empleado – Pedido | 1:N | `pedido.dni_empleado FK` |
+| Cliente – Pedido | 1:N | `pedido.id_cliente FK` |
+| Pedido – Libro | N:M | `Tabla intermedia detalle_pedido, con id_pedido FK, isbn FK, cantidad y precio_cobrado` |
 
 
 ## 5. Modelo lógico
 ## 6. Script SQL (schema.sql)
+
+```sql
+CREATE TABLE tienda (
+    id_tienda INT AUTO_INCREMENT,
+    nombre VARCHAR(100) NOT NULL,
+    direccion VARCHAR(200) NOT NULL,
+    telefono VARCHAR(20) NOT NULL,
+    ciudad VARCHAR(100) NOT NULL,
+    PRIMARY KEY (id_tienda)
+);
+```
+
+```sql
+CREATE TABLE empleado (
+    dni VARCHAR(9),
+    nombre VARCHAR(100) NOT NULL,
+    apellidos VARCHAR(150) NOT NULL,
+    cargo ENUM('librero', 'cajero', 'encargado') NOT NULL,
+    fecha_contratacion DATE NOT NULL,
+    correo VARCHAR(150) NOT NULL,
+    id_tienda INT NOT NULL,
+    PRIMARY KEY (dni),
+    FOREIGN KEY (id_tienda)
+        REFERENCES tienda(id_tienda)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT,
+    UNIQUE (correo)
+);
+```
+
+```sql
+CREATE TABLE cliente (
+    id_cliente INT AUTO_INCREMENT,
+    nombre_completo VARCHAR(200) NOT NULL,
+    email VARCHAR(150) NOT NULL,
+    telefono VARCHAR(20),
+    es_socio BOOLEAN NOT NULL DEFAULT FALSE,
+    fecha_alta DATE,
+    PRIMARY KEY (id_cliente),
+    UNIQUE (email)
+);
+```
+
+```sql
+CREATE TABLE editorial (
+    id_editorial INT AUTO_INCREMENT,
+    nombre VARCHAR(150) NOT NULL,
+    pais VARCHAR(100) NOT NULL,
+    telefono VARCHAR(20) NOT NULL,
+    PRIMARY KEY (id_editorial)
+);
+```
+
+```sql
+CREATE TABLE libro (
+    isbn CHAR(13),
+    titulo VARCHAR(250) NOT NULL,
+    año_publicacion YEAR NOT NULL,
+    num_paginas INT NOT NULL,
+    precio_catalogo DECIMAL(10,2) NOT NULL,
+    id_editorial INT NOT NULL,
+    PRIMARY KEY (isbn),
+    FOREIGN KEY (id_editorial)
+        REFERENCES editorial(id_editorial)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT,
+    CHECK (num_paginas > 0),
+    CHECK (precio_catalogo >= 0)
+);
+```
+
+```sql
+CREATE TABLE autor (
+    id_autor INT AUTO_INCREMENT,
+    nombre VARCHAR(200) NOT NULL,
+    nacionalidad VARCHAR(100) NOT NULL,
+    año_nacimiento YEAR NOT NULL,
+    PRIMARY KEY (id_autor)
+);
+```
+
+```sql
+CREATE TABLE libro_autor (
+    isbn CHAR(13),
+    id_autor INT,
+    rol ENUM('principal', 'colaborador') NOT NULL,
+    PRIMARY KEY (isbn, id_autor),
+    FOREIGN KEY (isbn)
+        REFERENCES libro(isbn)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    FOREIGN KEY (id_autor)
+        REFERENCES autor(id_autor)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+```
+
+```sql
+
+
+CREATE TABLE inventario (
+    id_tienda INT,
+    isbn CHAR(13),
+    stock INT NOT NULL DEFAULT 0,
+    fecha_conteo DATE NOT NULL,
+    PRIMARY KEY (id_tienda, isbn),
+    FOREIGN KEY (id_tienda)
+        REFERENCES tienda(id_tienda)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    FOREIGN KEY (isbn)
+        REFERENCES libro(isbn)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    CHECK (stock >= 0)
+);
+```
+
+```sql
+CREATE TABLE pedido (
+    id_pedido INT,
+    fecha DATE NOT NULL,
+    forma_pago ENUM('efectivo', 'tarjeta', 'bizum') NOT NULL,
+    estado ENUM('preparado', 'entregado', 'cancelado') NOT NULL,
+    id_tienda INT NOT NULL,
+    dni_empleado VARCHAR(9) NOT NULL,
+    id_cliente INT NOT NULL,
+    PRIMARY KEY (id_pedido),
+    FOREIGN KEY (id_tienda)
+        REFERENCES tienda(id_tienda)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT,
+    FOREIGN KEY (dni_empleado)
+        REFERENCES empleado(dni)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT,
+    FOREIGN KEY (id_cliente)
+        REFERENCES cliente(id_cliente)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
+);
+```
+
+```sql
+CREATE TABLE detalle_pedido (
+    id_pedido INT,
+    isbn CHAR(13),
+    cantidad INT NOT NULL,
+    precio_cobrado DECIMAL(10,2) NOT NULL,
+    PRIMARY KEY (id_pedido, isbn),
+    FOREIGN KEY (id_pedido)
+        REFERENCES pedido(id_pedido)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    FOREIGN KEY (isbn)
+        REFERENCES libro(isbn)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT,
+    CHECK (cantidad > 0),
+    CHECK (precio_cobrado >= 0)
+);
+```
+
 ## 7. Diccionario de datos
 ## 8. Decisiones de diseño
 ## 9. Datos de prueba
