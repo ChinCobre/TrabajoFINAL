@@ -1,0 +1,37 @@
+package Parte1;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import io.github.cdimascio.dotenv.Dotenv;
+/**
+ * Clase para conectarse a la base de datos
+ * carga las credenciales desde un archivo env
+ * 
+ * @author Sergio y Octavian
+ */
+public class ConexionBD {
+	/**
+     * Establece y devuelve una nueva conexión con la base de datos.
+     * 
+     * @return Objeto Connection activo para interactuar con la base de datos, 
+     *         o null si ocurre un error durante la conexión.
+     */
+    public static Connection getConnection() {
+        Connection conn = null;
+        try {
+            Dotenv dotenv = Dotenv.load();
+            String dbhost = dotenv.get("DB_HOST");
+            String dbport = dotenv.get("DB_PORT");
+            String dbdatabase = dotenv.get("DB_DATABASE");
+            String dbusername = dotenv.get("DB_USERNAME");
+            String dbpassword = dotenv.get("DB_PASSWORD");
+            String url = "jdbc:mysql://" + dbhost + ":" + dbport + "/" + dbdatabase;
+            conn = DriverManager.getConnection(url, dbusername, dbpassword);
+        } catch (SQLException ex) {
+            System.out.println("SQLException: " + ex.getMessage());
+        }
+        return conn;
+    }
+}
