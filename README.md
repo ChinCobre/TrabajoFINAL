@@ -55,8 +55,8 @@ Una vez dentro el archivo env.example quitamos el .example y modificamos los dat
 
 
 ## Documentación
-- [Manual de despliegue completo (PDF)](docs/manual_despliegue.pdf)
-- [JavaDoc](javadoc/index.html)
+- [Manual de despliegue completo (PDF)](ProyectoFINAL/doc/manual_despliegue.pdf)
+- [JavaDoc](ProyectoFINAL/doc/javadoc/index.html)
 ## Autores
 Sergio Adell
 
